@@ -36,7 +36,12 @@ public class CheckFiles {
 					JSONObject jsonObject = (JSONObject) obj;
 					String initialPrice = (String) jsonObject.get("initialprice");
 					Long userScore = (Long) jsonObject.get("userscore");
-					tempHolder.add(new String[] {initialPrice, Long.toString(userScore)});
+
+					if (initialPrice != null) {
+						if (!initialPrice.equals("0") && userScore != 0) {
+							tempHolder.add(new String[]{initialPrice, Long.toString(userScore)});
+						}
+					}
 
 				} catch (Exception e) {
 					e.printStackTrace();

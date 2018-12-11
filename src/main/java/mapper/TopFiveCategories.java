@@ -16,7 +16,7 @@ public class TopFiveCategories {
 		private final static IntWritable one = new IntWritable(1);
 
 		public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-			String[] stringSplitArray = value.toString().split("\t");
+			String[] stringSplitArray = value.toString().split(" ");
 
 			if (stringSplitArray.length > 5) {
 				category.set(stringSplitArray[3]);
