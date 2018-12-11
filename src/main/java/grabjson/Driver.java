@@ -24,7 +24,7 @@ public class Driver {
 					fileWriter.write(steamSpy.getJsonObject().toString());
 					fileWriter.close();
 
-					System.out.printf("Successfully Copied JSON Object to %s.json", query);
+					System.out.printf("\nSuccessfully Copied JSON Object to %s.json", query);
 					System.out.println("\nJSON Object: " + steamSpy.getJsonObject().toString());
 				} catch (IOException e){
 					e.printStackTrace();
