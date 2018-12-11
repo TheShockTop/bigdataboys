@@ -12,6 +12,27 @@ public class Driver {
 		List<String[]> data = csvReader.readAll();
 		data.remove(0);
 
+		for (int i = data.size() - 1; i > -1; i--) {
+			String query = data.get(i)[0];
+
+			System.out.printf("\nGetting appid: %s", query);
+
+			try {
+				SteamSpy steamSpy = new SteamSpy(query);
+				File file = new File("src/main/resources/json_files/" + query + ".json");
+
+				FileWriter fileWriter = new FileWriter(file);
+				fileWriter.write(steamSpy.getJsonObject().toString());
+				fileWriter.close();
+
+				System.out.printf("\nSuccessfully Copied JSON Object to %s.json", query);
+				System.out.println("\nJSON Object: " + steamSpy.getJsonObject().toString());
+			} catch (IOException e){
+				e.printStackTrace();
+			}
+		}
+
+		/*
 		for (String[] d : data){
 			for (String query : d){
 				System.out.printf("\nGetting appid: %s", query);
@@ -31,5 +52,6 @@ public class Driver {
 				}
 			}
 		}
+		*/
 	}
 }
